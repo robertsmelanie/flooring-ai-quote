@@ -1,8 +1,9 @@
 import express from 'express';
-// require('dotenv').config();
-// const express = require('express');
-const cors = require('cors');
-const { Configuration, OpenAIApi } = require('openai');
+import cors from 'cors';
+import { Configuration, OpenAIApi } from 'openai';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,12 +45,12 @@ Include:
             model: 'gpt-4',
             messages: [{ role: 'user', content: prompt }],
         });
-
+        if (!response.data.choices || response.data.choices[0].message) {
+                    return res.status(500).json({ error: 'Invalid response No quote generated' });
+                }
         const quote = response.data.choices[0].message.content.trim();
         res.json({ quote });
-        if (!response.data.choices || response.data.choices[0].message) {
-            return res.status(500).json({ error: 'Invalid response No quote generated' });
-        }
+       
     } catch (error) {
         console.error('OpenAI API error:', error.message);
         res.status(500).json({ error: 'Failed to generate quote' });
