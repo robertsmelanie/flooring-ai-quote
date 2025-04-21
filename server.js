@@ -20,6 +20,9 @@ const openai = new OpenAIApi(configuration);
 // Routes
 app.post('/api/quote', async (req, res) => {
     const { floor_type, square_footage, timeline, budget, client_name } = req.body;
+    if(!floor_type || !square_footage || !timeline || !budget || !client_name) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
 
     const prompt = `
 You are a professional assistant for a flooring contractor.
@@ -44,6 +47,9 @@ Include:
 
         const quote = response.data.choices[0].message.content.trim();
         res.json({ quote });
+        if (!response.data.choices || response.data.choices[0].message) {
+            return res.status(500).json({ error: 'Invalid response No quote generated' });
+        }
     } catch (error) {
         console.error('OpenAI API error:', error.message);
         res.status(500).json({ error: 'Failed to generate quote' });
