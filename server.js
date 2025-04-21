@@ -1,6 +1,6 @@
+import OpenAI from 'openai';
 import express from 'express';
 import cors from 'cors';
-import OpenAIApi from 'openai';
 import dotenv from 'dotenv';
 dotenv.config();
 
