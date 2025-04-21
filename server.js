@@ -13,10 +13,10 @@ app.use(cors());
 app.use(express.json());
 
 // OpenAI setup
-const configuration = new Configuration({
+const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
+
 
 // Routes
 app.post('/api/quote', async (req, res) => {
@@ -41,7 +41,7 @@ Include:
 `;
 
     try {
-        const response = await openai.createChatCompletion({
+        const response = await openai.chat.completions.create({
             model: 'gpt-4',
             messages: [{ role: 'user', content: prompt }],
         });
