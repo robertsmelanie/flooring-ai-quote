@@ -65,3 +65,48 @@ example of response :
 {
   "quote": "Hi Sarah, thanks so much for reaching out about your engineered hardwood flooring..."
 }
+
+Long Json
+
+{
+    "floor_type": "Engineered hardwood",
+    "square_footage": "1200",
+    "timeline": "2–4 weeks",
+    "budget": "$10–15k",
+    "client_name": "Sarah"
+}
+{
+    "floor_type": "Carpet",
+    "square_footage": "800",
+    "timeline": "1–2 weeks",
+    "budget": "$5–8k",
+    "client_name": "John"
+}
+{
+    "floor_type": "Vinyl plank",
+    "square_footage": "1500",
+    "timeline": "2–3 weeks",
+    "budget": "$7–12k",
+    "client_name": "Emily"
+}
+{
+    "floor_type": "Tile",
+    "square_footage": "1000",
+    "timeline": "3–5 weeks",
+    "budget": "$8–14k",
+    "client_name": "Michael"
+}
+{
+    "floor_type": "Laminate",
+    "square_footage": "900",
+    "timeline": "1–3 weeks",
+    "budget": "$4–9k",
+    "client_name": "Jessica"
+}
+{
+    "floor_type": "Bamboo",
+    "square_footage": "1100",
+    "timeline": "2–4 weeks",
+    "budget": "$6–11k",
+    "client_name": "David"
+}
