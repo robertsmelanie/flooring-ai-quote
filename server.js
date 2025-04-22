@@ -8,6 +8,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+    res.send('Server is running');
+});
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -19,9 +22,14 @@ const openai = new OpenAI({
 
 
 // Routes
+// app.post('/api/quote', (req, res) => {
+//     console.log('Received body:', req.body);
+//     res.json({ received: req.body });
+// });
 app.post('/api/quote', async (req, res) => {
-    const { floor_type, square_footage, timeline, budget, client_name } = req.body;
     console.log('Received request body:', req.body);
+    const { floor_type, square_footage, timeline, budget, client_name } = req.body;
+    
 
     
     if (!floor_type || !square_footage || !timeline || !budget || !client_name) {
@@ -29,7 +37,7 @@ app.post('/api/quote', async (req, res) => {
     }
 
     const prompt = `
-You are a professional assistant for a flooring contractor.
+You are a professional assistant for a flooring contractor
 
 Write a friendly and professional email quote for a customer named ${client_name}, who requested:
 - Flooring type: ${floor_type}
