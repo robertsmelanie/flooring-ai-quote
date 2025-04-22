@@ -21,7 +21,10 @@ const openai = new OpenAI({
 // Routes
 app.post('/api/quote', async (req, res) => {
     const { floor_type, square_footage, timeline, budget, client_name } = req.body;
-    if(!floor_type || !square_footage || !timeline || !budget || !client_name) {
+    console.log('Received request body:', req.body);
+
+    
+    if (!floor_type || !square_footage || !timeline || !budget || !client_name) {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -64,4 +67,3 @@ Include:
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-console.log('Received request body:', req.body);
