@@ -47,7 +47,7 @@ Include:
         });
 
         const quote = response.choices?.[0]?.message?.content?.trim();
-        
+
         if (!quote) {
             return res.status(500).json({ error: 'Invalid response No quote generated' });
         }
@@ -64,3 +64,4 @@ Include:
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+console.log('Received request body:', req.body);
